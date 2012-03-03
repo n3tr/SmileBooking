@@ -9,7 +9,7 @@ class Booking extends CI_Controller {
 			redirect('signin/loginform');
 		}else{
 
-
+			$this->db->order_by("tableland_id", "asc"); 
 			$query = $this->db->get('tableland');
 
 			$data['tablelist'] = $query->result();
@@ -94,7 +94,7 @@ class Booking extends CI_Controller {
 
 
 	}
-}
+
 
 	public function show()
 	{	
