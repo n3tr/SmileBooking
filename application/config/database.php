@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'n3tr';
-$db['default']['password'] = '1234';
+$db['default']['password'] = '123456';
 $db['default']['database'] = 'smilebooking';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

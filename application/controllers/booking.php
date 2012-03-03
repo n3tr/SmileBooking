@@ -42,13 +42,17 @@ class Booking extends CI_Controller {
 
 			$data['user'] = $query->first_row('array');
 			$data['table_id'] = $table_id;
+
+			$this->load->view('template/header');
 			$this->load->view('booking/confirm_booking',$data);
+			$this->load->view('template/footer');
 
 		}
 	}
 
 	public function confirm_booking($table_id)
 	{
+
 		$mysqldate = date( 'Y-m-d H:i:s');
 		$user_id = $this->session->userdata('user_id');
 		$booking_status = 1;
@@ -62,10 +66,30 @@ class Booking extends CI_Controller {
 
 		$this->db->insert('booking',$tableland_data);
 
+
 		$this->db->where('tableland_id',$table_id);
 		$this->db->update('tableland',array('status'=>'1'));
 
-		echo "ok";
+		
+
+
+		$this->db->select('*');
+		$this->db->from('booking');
+		$this->db->join('customer','customer.cus_id = booking.cus_id');
+		$this->db->where('booking_date',$mysqldate);
+		$this->db->where('tableland_id',$table_id);
+
+		$query = $this->db->get();
+
+		$booking_data = $query->first_row('array');
+
+		$data['booking_data'] = $booking_data;
+
+		$this->session->set_userdata('booking_id',$booking_data['booking_id']);
+
+		$this->load->view('template/header');
+		$this->load->view('booking/success_booking',$data);
+		$this->load->view('template/footer');
 
 
 
