@@ -2,7 +2,6 @@
 
 class Booking extends CI_Controller {
 
-<<<<<<< HEAD
 
 	public function index()
 	{
@@ -96,7 +95,7 @@ class Booking extends CI_Controller {
 
 	}
 }
-=======
+
 	public function show()
 	{	
 		$this->load->view('booking/confirm');
@@ -131,4 +130,4 @@ class Booking extends CI_Controller {
 		$this->db->update('booking', array('booking_status'=>'2'));
 	}
 }
->>>>>>> ade62dc57ad34e62344044601685297e7780db4d
+

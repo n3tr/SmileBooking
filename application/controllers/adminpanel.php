@@ -147,14 +147,11 @@ class Adminpanel extends CI_Controller {
 		}
 	}
 
-<<<<<<< HEAD
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
 	}
-=======
 
-
->>>>>>> ade62dc57ad34e62344044601685297e7780db4d
 }
 
