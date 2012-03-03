@@ -114,6 +114,8 @@ class Onlineorder extends CI_Controller {
 
 
 		$this->db->insert_batch('order_detail',$orders);
+
+		$this->session->unset_userdata('booking_id');
 	}
 }
 

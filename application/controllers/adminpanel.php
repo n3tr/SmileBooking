@@ -4,7 +4,10 @@ class Adminpanel extends CI_Controller {
 
 	public function login()
 	{
+		$data['title'] = "Login";
+		$this->load->view('admin-template/header',$data);
 		$this->load->view('admin/login');
+		$this->load->view('admin-template/footer');
 	}
 
 
@@ -33,7 +36,10 @@ class Adminpanel extends CI_Controller {
 
 	public function formtable()
 	{
+		$data['title'] = "Add Table for Customer";
+		$this->load->view('admin-template/header',$data);
 		$this->load->view('admin/addtable');
+		$this->load->view('admin-template/footer');
 	}
 
 
@@ -58,7 +64,12 @@ class Adminpanel extends CI_Controller {
 		$query = $this->db->get('customer');
 		$result = $query->result();
 		$data['result'] = $result;
+
+
+		$data['title'] = "Management for Customer";
+		$this->load->view('admin-template/header',$data);
 		$this->load->view('admin/delcus',$data);
+		$this->load->view('admin-template/footer');
 	}
 
 	public function delcus($id)
@@ -76,7 +87,10 @@ class Adminpanel extends CI_Controller {
 
 	public function formtype()
 	{	
+		$data['title'] = "Add Type of Food";
+		$this->load->view('admin-template/header');
 		$this->load->view('admin/addtype');
+		$this->load->view('admin-template/footer');
 	}
 	
 	public function addtype()
@@ -104,7 +118,10 @@ class Adminpanel extends CI_Controller {
 		}
 
 		$data['option'] = $option;
+
+		$this->load->view('admin-template/header');
 		$this->load->view('admin/addfood', $data);
+		$this->load->view('admin-template/footer');
 	}
 
 

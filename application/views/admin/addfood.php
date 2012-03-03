@@ -1,6 +1,6 @@
 <?php
 		echo form_open_multipart('adminpanel/addfood');
-		echo '<table>'.'<tr>'.'<td>';
+		echo '<table class="table table-bordered">'.'<tr>'.'<td>';
 		echo form_label('Name', 'name');
 		echo '</td>'.'<td>';
 		echo form_input('name');
