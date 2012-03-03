@@ -22,7 +22,7 @@ body {
 </style>
 </head>
 
-<body onload="MM_preloadImages('images/icon2/smile1_05.gif','images/icon2/smile1_07.gif','images/icon2/smile1_08.gif','images/icon2/smile1_09.gif','images/icon2/smile1_10.jpg','images/webboard2.gif')">
+<body>
 <table width="200" border="0">
   <tr>
 

@@ -43,10 +43,13 @@
           <div class="nav-collapse">
             <ul class="nav">
               <?php if ($this->session->userdata('is_admin') == TRUE): ?>
+               <li class="active"><?php echo anchor('booking/show',"Reverse Manager");?></li>
+                <li class="active"><?php echo anchor('order/form',"Order Manager");?></li>
                 <li class="active"><?php echo anchor('adminpanel/formfood',"Add Food");?></li>
                 <li class="active"><?php echo anchor('adminpanel/formtype',"Add Type");?></li>
-                 <li class="active"><?php echo anchor('adminpanel/delcus',"Manage Customer");?></li>
+                 <li class="active"><?php echo anchor('adminpanel/managecus',"Manage Customer");?></li>
                  <li class="active"><?php echo anchor('adminpanel/formtable',"Table");?></li>
+
 
               <?php else: ?>
                  <li class="active"><?php echo anchor('adminpanel/login',"Login");?></li>

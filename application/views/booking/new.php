@@ -12,10 +12,10 @@
 			array_push($seatinrow , anchor('booking/create/' . $tablelist[$i-1]->tableland_id ,$tablelist[$i-1]->tableland_id ));
 		}else if($tablelist[$i-1]->status == 1){
 			
-			array_push($seatinrow , $tablelist[$i-1]->tableland_id);
+			array_push($seatinrow , img('images/jong.bmp'));
 		}else{
 	
-			array_push($seatinrow , $tablelist[$i-1]->tableland_id);
+			array_push($seatinrow , img('images/jong.bmp'));
 		}
 
 

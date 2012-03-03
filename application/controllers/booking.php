@@ -5,6 +5,25 @@ class Booking extends CI_Controller {
 
 	public function index()
 	{
+
+		$user_id = $this->session->userdata('user_id');
+
+		$this->db->select('*');
+		$this->db->from('booking');
+		$this->db->where('cus_id',$user_id);
+		$this->db->where('booking_status' , 1);
+		$this->db->where('tableland_id !=' , 0);
+		$query = $this->db->get();
+
+		//print_r($query->result());die();
+
+		if($query->num_rows() > 0){
+			$this->load->view('template/header');
+			$this->load->view('booking/alreadybook');
+			$this->load->view('template/footer');
+			return;
+		}
+
 		if($this->session->userdata('logged_in') != TRUE ){
 			redirect('signin/loginform');
 		}else{
@@ -64,7 +83,13 @@ class Booking extends CI_Controller {
 								'booking_status' => $booking_status
 							);
 
+
+		$this->db->flush_cache();
+
 		$this->db->insert('booking',$tableland_data);
+	
+
+		$this->db->flush_cache();
 
 
 		$this->db->where('tableland_id',$table_id);
@@ -72,13 +97,14 @@ class Booking extends CI_Controller {
 
 		
 
+		$this->db->flush_cache();
 
 		$this->db->select('*');
 		$this->db->from('booking');
 		$this->db->join('customer','customer.cus_id = booking.cus_id');
 		$this->db->where('booking_date',$mysqldate);
 		$this->db->where('tableland_id',$table_id);
-
+		$this->db->where('tableland_id !=','0');
 		$query = $this->db->get();
 
 		$booking_data = $query->first_row('array');
@@ -91,14 +117,30 @@ class Booking extends CI_Controller {
 		$this->load->view('booking/success_booking',$data);
 		$this->load->view('template/footer');
 
-
-
 	}
+
+
+
 
 
 	public function show()
 	{	
-		$this->load->view('booking/confirm');
+
+		$this->db->select('*');
+		$this->db->from('booking');
+		$this->db->join('customer','customer.cus_id = booking.cus_id');
+		$this->db->where('booking_status',1);
+		$this->db->where('tableland_id !=',0);
+		$query = $this->db->get('');
+
+		$booking = $query->result('array');
+
+		$data['bookings'] = $booking;
+
+		$data['title'] = "Show Booking";
+		$this->load->view('admin-template/header',$data);
+		$this->load->view('booking/confirm',$data);
+		$this->load->view('admin-template/footer');
 	}
 
 
@@ -129,5 +171,39 @@ class Booking extends CI_Controller {
 		$this->db->where('booking_id',$booking_id);
 		$this->db->update('booking', array('booking_status'=>'2'));
 	}
+
+	// Admin
+
+	public function admin_confirm($booking_id)
+	{
+		if (isset($booking_id)) {
+			$this->db->where('booking_id',$booking_id);
+			$this->db->update('booking',array('booking_status'=>2));
+		
+		}
+		redirect('booking/show');
+		
+	}
+
+	public function admin_reject($booking_id,$tableland_id)
+	{
+		
+		if (isset($booking_id)) {
+			$this->db->where('booking_id',$booking_id);
+			$this->db->update('booking',array('booking_status'=>3));
+
+			$this->db->flush_cache();
+
+			$this->db->where('tableland_id',$tableland_id);
+			$this->db->update('tableland',array('status'=>0));
+
+		
+		}
+		redirect('booking/show');
+		
+	}
+
+
+
 }
 

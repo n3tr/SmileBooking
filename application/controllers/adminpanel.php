@@ -25,8 +25,8 @@ class Adminpanel extends CI_Controller {
 					'is_admin' => TRUE
                );
 			$this->session->set_userdata($newdata);
-		//	$this->load->view('register/successview');
-			echo $this->session->userdata('username');
+			redirect('booking/show');
+			
 	
 		}else{
 			redirect('adminpanel/login');
@@ -151,6 +151,19 @@ class Adminpanel extends CI_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
+	}
+
+	public function report()
+	{
+		$query = $this->db->query('SELECT COUNT(*) as count, DATE(booking_date) as day_date FROM booking WHERE tableland_id != 0 GROUP BY DATE(booking.booking_date)');
+		
+		$report = $query->result('array');
+		$data['report'] = $report;
+
+		$this->load->view('admin-template/header');
+		$this->load->view('admin/report',$data);
+		$this->load->view('admin-template/footer');
+		
 	}
 
 }

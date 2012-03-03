@@ -4,7 +4,26 @@ class Order extends CI_Controller {
 
 	public function form()
 	{	
-		$this->load->view('order/form');
+		$this->db->select('*');
+		$this->db->from('booking');
+		$this->db->join('customer','customer.cus_id = booking.cus_id');
+		$this->db->join('order','booking.booking_id = order.booking_id');
+		$this->db->where('booking_status',2);
+		$this->db->where('tableland_id !=',0);
+		$query = $this->db->get('');
+
+		$booking = $query->result('array');
+
+		
+
+		$data['bookings'] = $booking;
+
+		$data['title'] = "Confirm Order";
+
+		
+		$this->load->view('admin-template/header', $data);
+		$this->load->view('order/form',$data);
+		$this->load->view('admin-template/footer');
 	}
 
 
@@ -37,8 +56,43 @@ class Order extends CI_Controller {
 
 		$this->load->view('order/show',$data);
 		}else{
-			redirect('order/show');
+			redirect('order/form');
 		}
+	}
+
+
+
+	function vieworder($order_id)
+	{
+		$this->db->select('*');
+		$this->db->from('order_detail');
+		$this->db->join('food','food.food_id = order_detail.food_id');
+		$this->db->where('order_id',$order_id);
+		$query = $this->db->get();
+
+
+		$orders = $query->result('array');
+		$data['orders']  = $orders;
+		$data['title'] = "Order Detail : " . $order_id; 
+
+
+		$this->load->view('admin-template/header',$data);
+		$this->load->view('order/vieworderdetail');
+		$this->load->view('admin-template/footer',$data);
+	}
+
+
+	public function clear($booking_id,$tableland_id)
+	{
+		$this->db->where('booking_id',$booking_id);
+		$this->db->update('booking',array('booking_status' => 4));
+
+
+		$this->db->where('tableland_id',$tableland_id);
+		$this->db->update('tableland',array('status' => 0));
+
+		redirect('order/form');
+
 	}
 
 }
