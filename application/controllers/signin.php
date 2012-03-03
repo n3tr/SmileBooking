@@ -23,14 +23,9 @@ class Signin extends CI_Controller {
                );
 
 			$this->session->set_userdata($newdata);
-<<<<<<< HEAD
-			$this->load->view('template/header');
-			$this->load->view('register/successview');
-			$this->load->view('template/footer');
 
-=======
 			redirect('profile/show');
->>>>>>> b6b1105e4cbf60a6710383916f084e13d08b7438
+
 	
 		}else{
 			$this->load->view('template/header');

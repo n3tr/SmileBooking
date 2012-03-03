@@ -7,8 +7,10 @@ class Profile extends CI_Controller {
 		$query = $this->db->get_where('customer', array('cus_id' => $id), 1);
 		$user = $query->first_row('array');
 		$data['user'] = $user;
-		$this->load->view('profile/show',$data);
 
+		$this->load->view('template/header',$data);
+		$this->load->view('profile/show',$data);
+		$this->load->view('template/footer',$data);
 	}
 }
 

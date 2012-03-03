@@ -27,16 +27,10 @@ class Register extends CI_Controller {
 			'e-mail' => $email,
 );
 
-<<<<<<< HEAD
-		$this->db->insert('customer', $data);
 
-		$this->load->view('template/header'); 
-		$this->load->view('register/successview');
-		$this->load->view('template/footer');
-=======
 $this->db->insert('customer', $data); 
 		redirect('signin/loginform');
->>>>>>> b6b1105e4cbf60a6710383916f084e13d08b7438
+
 	}
 }
 
