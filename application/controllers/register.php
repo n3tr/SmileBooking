@@ -5,7 +5,9 @@ class Register extends CI_Controller {
 
 	public function form()
 	{
+		$this->load->view('template/header');
 		$this->load->view('register/formregister');
+		$this->load->view('template/footer');
 	}
 	public function create()
 	{
