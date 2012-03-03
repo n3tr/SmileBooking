@@ -146,5 +146,10 @@ class Adminpanel extends CI_Controller {
 			echo "You not Admin";
 		}
 	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+	}
 }
 
