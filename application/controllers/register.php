@@ -26,7 +26,7 @@ class Register extends CI_Controller {
 );
 
 $this->db->insert('customer', $data); 
-		$this->load->view('register/successview');
+		redirect('signin/loginform');
 	}
 }
 
