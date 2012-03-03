@@ -4,7 +4,9 @@ class Signin extends CI_Controller {
 
 	public function loginform()
 	{
+		$this->load->view('template/header');
 		$this->load->view('signin_view/signinform');
+		$this->load->view('template/footer');
 	}
 	public function check()
 	{	
@@ -15,16 +17,28 @@ class Signin extends CI_Controller {
 
 		if(count($result)!=0){
 			$newdata = array(
+					'user_id' => $result[0]->cus_id,
                    'username'  => $username,
                    'logged_in' => TRUE
                );
 
 			$this->session->set_userdata($newdata);
+			$this->load->view('template/header');
 			$this->load->view('register/successview');
+			$this->load->view('template/footer');
+
 	
 		}else{
+			$this->load->view('template/header');
 			$this->load->view('signin_view/signinform');
+			$this->load->view('template/footer');
+
 		}
+	}
+
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect('signin/loginform');
 	}
 }
 

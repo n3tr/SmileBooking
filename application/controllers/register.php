@@ -5,7 +5,9 @@ class Register extends CI_Controller {
 
 	public function form()
 	{
+		$this->load->view('template/header');
 		$this->load->view('register/formregister');
+		$this->load->view('template/footer');
 	}
 	public function create()
 	{
@@ -25,8 +27,11 @@ class Register extends CI_Controller {
 			'e-mail' => $email,
 );
 
-$this->db->insert('customer', $data); 
+		$this->db->insert('customer', $data);
+
+		$this->load->view('template/header'); 
 		$this->load->view('register/successview');
+		$this->load->view('template/footer');
 	}
 }
 

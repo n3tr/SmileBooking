@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '3333';
+$db['default']['username'] = 'n3tr';
+$db['default']['password'] = '1234';
 $db['default']['database'] = 'smilebooking';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
