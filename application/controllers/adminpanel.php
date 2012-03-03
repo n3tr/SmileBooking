@@ -129,5 +129,8 @@ class Adminpanel extends CI_Controller {
 			echo "You not Admin";
 		}
 	}
+
+
+
 }
 
