@@ -1,10 +1,17 @@
 <?php
-echo form_open('adminpanel/check');
-	echo form_label('User :', 'username');
+	echo form_open('adminpanel/check');
+	echo '<table>';
+	echo '<tr>'.'<td>';
+	echo form_label('User', 'username');
+	echo '</td>'.'<td>'.':';
 	echo form_input('username');
-	echo br();
-	echo form_label('Password :', 'password');
+	echo '</td>'.'</tr>';
+	echo '<tr>'.'<td>';
+	echo form_label('Password', 'password');
+	echo '</td>'.'<td>'.':';
 	echo form_password('password');
-	echo br();
+	echo '<tr>'.'<td>';
 	echo form_submit('mysubmit', 'Submit');
+	echo '</td>'.'<td>'.'&nbsp;'.'</td>'.'</tr>';
+	echo '</table>';
 ?>
