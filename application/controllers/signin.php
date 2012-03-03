@@ -15,12 +15,13 @@ class Signin extends CI_Controller {
 
 		if(count($result)!=0){
 			$newdata = array(
+					'user_id' => $result[0]->cus_id,
                    'username'  => $username,
                    'logged_in' => TRUE
                );
 
 			$this->session->set_userdata($newdata);
-			$this->load->view('register/successview');
+			redirect('profile/show');
 	
 		}else{
 			$this->load->view('signin_view/signinform');
