@@ -6,6 +6,8 @@
 		$drop_type[$type['type_id']] = $type['name'];
 	}
 
+	
+
 	$food_type_id = isset($food_type_id) ? $food_type_id : 0;
 
 	echo form_open('onlineorder/index');
@@ -15,9 +17,19 @@
 
 
 	foreach ($foods as $food) {
-		$this->table->set_heading(/*'Image',*/'Name', 'Price','Add');
+
+
+		$image_path = $food['pic_url']== null ? "upload/image.jpg" : $food['pic_url'];
+
+		$image_properties = array(
+          'src' => $image_path,
+          'width' => '100',
+          'height' => '100'  
+		);
+
+		$this->table->set_heading('Image','Name', 'Price','Add');
 		
-		$this->table->add_row(/*img('images/food.jpg'),*/$food['name'],$food['price'],anchor('onlineorder/add/' . $food['food_id'],'add'));
+		$this->table->add_row(img($image_properties),$food['name'],$food['price'],anchor('onlineorder/add/' . $food['food_id'],'add'));
 	
 	}
 

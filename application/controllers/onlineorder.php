@@ -105,7 +105,7 @@ class Onlineorder extends CI_Controller {
 		$current_order = $this->session->userdata('booking_id');
 		$this->db->insert('order',array('booking_id'=>$current_order));
 
-		$order_id = $this->db->get('order')->last_row('array');
+		$order_id = $this->db->get('order')->first_row('array');
 
 	
 		$orders = array();

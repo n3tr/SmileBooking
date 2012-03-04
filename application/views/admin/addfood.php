@@ -15,7 +15,7 @@
 		echo '</td>'.'</tr>'.'<tr>'.'<td>';
 		echo form_label('Image', 'pic_url');
 		echo '</td>'.'<td>';
-		echo form_upload('pic_url');
+		echo '<input type="file" name="userfile" size="20" />';
 		echo '</td>'.'</tr>'.'<tr>'.'<td>';
 		echo form_label('NameType', 'name');
 		echo '</td>'.'<td>';

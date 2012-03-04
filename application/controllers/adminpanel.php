@@ -128,20 +128,46 @@ class Adminpanel extends CI_Controller {
 	public function addfood()
 	{	
 		if ($this->session->userdata('is_admin') == TRUE ){
-		$name = $this->input->post('name');
-		$price = $this->input->post('price');
-		$desc = $this->input->post('desc');
-		$pic_url = $this->input->post('pic_url');
-		$type_id = $this->input->post('type_id');
-		$data = array(
-			'name' => $name, 
-			'price' => $price,
-			'desc' => $desc,
-			'pic_url' => $pic_url,
-			'type_id' => $type_id
-			);
-		$this->db->insert('food', $data); 
-		redirect('adminpanel/formfood');
+
+			$config['upload_path'] = './upload/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size']	= '1000';
+			$config['max_width']  = '800';
+			$config['max_height']  = '800';
+			$config['encrypt_name'] = TRUE;
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if ( ! $this->upload->do_upload())
+			{
+				$error = array('error' => $this->upload->display_errors());
+				
+				//$this->load->view('upload_form', $error);
+				print_r($error);die();
+				$filename = "";
+			}	
+			else
+			{
+				$upload_data = array('upload_data' => $this->upload->data());
+				$filename = 'upload/' . $upload_data['upload_data']['file_name'];
+				//print_r($upload_data);die();
+				//$this->load->view('upload_success', $data);
+			}
+
+			$name = $this->input->post('name');
+			$price = $this->input->post('price');
+			$desc = $this->input->post('desc');
+			
+			$type_id = $this->input->post('type_id');
+			$data = array(
+				'name' => $name, 
+				'price' => $price,
+				'desc' => $desc,
+				'pic_url' => $filename,
+				'type_id' => $type_id
+				);
+			$this->db->insert('food', $data); 
+			redirect('adminpanel/formfood');
 		} else {
 			echo "You not Admin";
 		}
