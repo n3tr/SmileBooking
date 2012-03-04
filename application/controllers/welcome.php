@@ -21,6 +21,20 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public function intromenu()
+	{
+		$this->load->view('template/header');
+		$this->load->view('intromenu');
+		$this->load->view('template/footer');
+	}
+
+	public function contactus()
+	{
+		$this->load->view('template/header');
+		$this->load->view('contactus');
+		$this->load->view('template/footer');
+	}
 }
 
 /* End of file welcome.php */

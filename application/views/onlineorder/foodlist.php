@@ -15,9 +15,9 @@
 
 
 	foreach ($foods as $food) {
-		$this->table->set_heading('Image','Name', 'Price','Add');
+		$this->table->set_heading(/*'Image',*/'Name', 'Price','Add');
 		
-		$this->table->add_row(img('images/food.jpg'),$food['name'],$food['price'],anchor('onlineorder/add/' . $food['food_id'],'add'));
+		$this->table->add_row(/*img('images/food.jpg'),*/$food['name'],$food['price'],anchor('onlineorder/add/' . $food['food_id'],'add'));
 	
 	}
 

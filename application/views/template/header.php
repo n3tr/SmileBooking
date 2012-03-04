@@ -1,4 +1,4 @@
-<<?php echo doctype('html5');?>
+<?php echo doctype('html5');?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,35 +25,41 @@ body {
 <body>
 <table width="200" border="0">
   <tr>
-
-    <td colspan="10"><img src="<?php echo base_url('images/smile1_01.gif') ?>" width="950" height="275" /></td>
+    <td colspan="10"><?php echo img('images/smile1_01.gif');?></td>
   </tr>
   <tr>
+    <td height="50">&nbsp;</td>
+    <td><?php echo img('images/smile1_03.gif');?></td>
+    <td>&nbsp;</td>
+    <td colspan="6"><p>
+      <marquee bgcolor="#FFFFFF" border="0" align="middle" scrollamount="2"  scrolldelay="90" behavior="scroll"  width="100%" height="20" style="color: #652800; font-size: 14">
+      <strong>ยินดีต้อนรับเข้าสู่เว็บไซต์ Smile</strong> @waterside khonkaen tel.043-320777,085-0019951
+      </marquee>
+      <br />
+    </p>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="3" height="37">&nbsp;</td>
     <td width="231" valign="top">
-      <a href="index1.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/icon2/smile1_05.gif',1)">
+      <a href="<?php echo site_url('welcome'); ?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/icon2/smile1_05.gif',1)">
         <img src="<?php echo base_url('images/smile1_05.gif') ?>" name="Image4" width="212" height="35" border="0" id="Image4" />
       </a>
-      <a href="promotion.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image5','','images/icon2/smile1_06.gif',0)">
-        <img src="<?php echo base_url('images/smile1_06.gif') ?>" name="Image5" width="212" height="35" border="0" id="Image5" />
-      </a>
+     
 
-      <?php echo anchor('booking',  img('images/smile1_07.gif')); ?>
-      <a href="intromenu.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','images/icon2/smile1_08.gif',1)">
-        <img src="<?php echo base_url('images/smile1_08.gif') ?>" name="Image7" width="212" height="35" border="0" id="Image7" />
-      </a>
-      <a href="home.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','images/icon2/smile1_09.gif',1)">
-        <img src="<?php echo base_url('images/smile1_09.gif') ?>" name="Image10" width="212" height="35" border="0" id="Image10" />
-      </a>
-      <a href="Contact.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/icon2/smile1_10.jpg',1)">
-        <img src="<?php echo base_url('images/smile1_10.jpg') ?>" name="Image9" width="212" height="35" border="0" id="Image9" />
-      </a>
-      <a href="phpBB/index.php" target="_blank" onmouseover="MM_swapImage('Image13','','images/webboard2.gif',1)" onmouseout="MM_swapImgRestore()">
+       <?php echo anchor('booking',  img('images/smile1_07.gif')); ?>
+      <?php echo anchor('welcome/intromenu',  img('images/smile1_08.gif')); ?>
+      <?php echo anchor('welcome/contactus',  img('images/smile1_10.jpg')); ?>
+      
+      
+      
+      <a href="http://localhost/forums/" target="_blank" onmouseover="MM_swapImage('Image13','','images/webboard2.gif',1)" onmouseout="MM_swapImgRestore()">
         <img src="<?php echo base_url('images/webboard.gif') ?>" name="Image13" width="213" height="35" border="0" id="Image13" />
       </a>
 
       <?php echo img('images/gallery.jpg'); ?>
     </td>
-    <td>
+    <td width="700">
 
    
 

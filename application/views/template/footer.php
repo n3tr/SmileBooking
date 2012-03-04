@@ -5,7 +5,7 @@
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td colspan="9"><img src="images/footer.jpg" width="950" height="38" /></td>
+    <td colspan="9"><?php echo img('images/footer.jpg'); ?></td>
   </tr>
 </table>
 </body>

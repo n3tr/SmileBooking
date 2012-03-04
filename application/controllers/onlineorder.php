@@ -25,6 +25,7 @@ class Onlineorder extends CI_Controller {
 
 			$this->load->view('template/header');
 			$this->load->view('onlineorder/foodlist',$data);
+			$this->load->view('onlineorder/cart');
 			$this->load->view('template/footer');
 		}else{
 			$query = $this->db->get('food');
